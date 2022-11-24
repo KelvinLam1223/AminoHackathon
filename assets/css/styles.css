@@ -243,6 +243,7 @@ img {
 .checkboxWrapper{
   margin-left: auto;
   margin-right: auto;
+  padding-right: 2px;
   width: 80%;
   overflow: auto;
   height: 100%;
