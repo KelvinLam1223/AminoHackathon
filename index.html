@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <!--=============== FONTS ===============-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+        <title>Amino Lunch Buddy</title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+              <div style="margin-top: 10px;">
+                <img src="assets/img/Group.png" alt="" class="header__icon">
+                <a href="index.html" class="nav__logo">Lunch Buddy</a>
+              </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="" class="nav__link active-link">
+                                <i class='bx bx-bowl-hot nav__icon'></i>
+                                <span class="nav__name">What to eat?</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <img src="assets/img/Group.png" alt="" class="nav__img">
+            </nav>
+        </header>
+
+        <main>
+            <!--=============== HOME ===============-->
+            <section class="container section section__height" id="home">
+              <!--container for planSelection-->
+              <div class="center">
+                <h2 id="planTitle" class="section__title">Select your plan:</h2>
+                <button id="dayPlan" style="margin-top: 3rem;" class="button" role="button" onclick="planSelection('d')"><i class='bx bx-dish'></i> Day Plan</button>
+                <button id="weekPlan" class="button" role="button" onclick="planSelection('w')"><i class='bx bx-calendar'></i> Weekly Plan</button>
+              </div>
+
+              <!-- container for Day plan criteria -->
+              <div id="criteriaContainer" style="display: none; opacity:0;" class="center criteriaContainer">
+                <form action="" class="criteriaForm" method="get">
+                  <h2  class="section__title">Please input your desired search area:</h2>
+                    <div class="slidecontainer">
+                      <input type="range" min="100" max="3000" value="100" step="100" class="slider" name="distance" id="myRange">
+                      <p style="color: black;">Radius range: <span id="rangeIndicator"></span>m</p>
+                    </div>
+                  <h2 class="section__title">Select type of restaurant:</h2>
+                    <div class="restaurantBoxes">
+                        <div class="checkboxWrapper">
+                          <input type="checkbox" id="box-1" name="restaurantType" value="Japanese">
+                          <label for="box-1" onclick="toggleBox(box-1)">Japanese</label>
+                          <input type="checkbox" id="box-2" name="restaurantType" value="Bento">
+                          <label for="box-2" onclick="toggleBox()">Bento</label>
+                          <input type="checkbox" id="box-3" name="restaurantType" value="Burger">
+                          <label for="box-3" onclick="toggleBox()">Burger</label>
+                          <input type="checkbox" id="box-4" name="restaurantType"value="Cha Chaan Teng">
+                          <label for="box-4" onclick="toggleBox()">Cha Chaan Teng</label>
+                          <input type="checkbox" id="box-5" name="restaurantType" value="Cafe">
+                          <label for="box-5" onclick="toggleBox()">Cafe</label>
+                          <input type="checkbox" id="box-6" name="restaurantType" value="Ramen">
+                          <label for="box-6" onclick="toggleBox()">Ramen</label>
+                        </div>
+                    </div>
+                    <!-- For dayplan -->
+                  <h2 id="randomOrList" style="display: none; opacity:0;" class="section__title">List of result or give a random result?</h2>
+                    <div id="randomCheckBoxes" style="display: none; opacity:0;" class="randomCheckBoxes">
+                        <div class="randomCheckboxWrapper">
+                          <input type="radio" id="random" value="random" name="randomOrList">
+                          <label for="random">Random</label>
+                          <input type="radio" id="list" value="list" name="randomOrList">
+                          <label for="list">List</label>
+                        </div>
+                    </div>
+
+                    <!-- For weekplan -->
+                    <h2 id="randomAndRepeat" style="display: none; opacity:0;" class="section__title">Allow repeat?</h2>
+                      <div id="randomCheckBoxes2" style="display: none; opacity:0;" class="randomCheckBoxes2">
+                          <div class="randomCheckboxWrapper">
+                            <input type="radio" id="yes" value="Y" name="randomAndRepeat">
+                            <label for="yes">Yes</label>
+                            <input type="radio" id="no" value="N" name="randomAndRepeat">
+                            <label for="no">No</label>
+                          </div>
+                      </div>
+
+                    <!-- Submit -->
+                    <div id="backAndSubmit" style="margin: 20px auto 0 auto; width: 285px;">
+                      <input id="back" type="button" class="backButton" onclick="backToIndex()" value="Back">
+                      <input id="submitRequest" type="submit" onclick="submitRequest()">
+                    </div>
+              </form>
+              </div>
+              <!-- container for Week plan criteria -->
+
+      </section>
+        </main>
+
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

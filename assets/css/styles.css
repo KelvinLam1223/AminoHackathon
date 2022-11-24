@@ -1,0 +1,658 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  --hue: 174;
+  --sat: 63%;
+  --first-color: hsl(var(--hue), var(--sat), 40%);
+  --first-color-alt: hsl(var(--hue), var(--sat), 36%);
+  --title-color: hsl(var(--hue), 12%, 15%);
+  --text-color: hsl(var(--hue), 8%, 35%);
+  --body-color: hsl(var(--hue), 100%, 99%);
+  --container-color: #FFF;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Open Sans', sans-serif;
+  --h1-font-size: 1.5rem;
+  --normal-font-size: .938rem;
+  --tiny-font-size: .625rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --h1-font-size: 2.25rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: linear-gradient(313deg, #A2FFE9 -31.26%, #D5FCFF 14.45%, #FFFFFF 70.11%);
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 4.5rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+.section__height {
+  height: 100vh;
+}
+
+.center{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.criteriaContainer{
+  width: 80vw;
+  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+.button {
+  width: 225px;
+  height: 50px;
+  border: 1px solid;
+  background: #2dc74e;
+  border-radius: 25px;
+  font-size: 1.5rem;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: background .2s ease-in-out, opacity .2s ease-in-out; /* For Safari 3.1 to 6.0 */
+  display: block;
+  margin-bottom: 3rem;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  opacity: 1;
+}
+
+.button:active {
+  background: #b2edbe;
+  transition: background .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: background .2s ease-in-out, opacity .2s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+
+/*=============== LAYOUT ===============*/
+.container {
+  max-width: 1200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/*=============== HEADER ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: var(--z-fixed);
+  transition: .4s;
+}
+
+/*============ slider============ */
+.slidecontainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  max-width: 900px;
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d4f1d99e;
+  outline: none;
+  opacity: 0.7;
+  border-radius: 20px;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+
+/*======== CHECKBOX CONTAINER =========*/
+
+.restaurantBoxes {
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+.randomCheckBoxes {
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+.randomCheckBoxes2 {
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+.checkboxWrapper{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  overflow: auto;
+  height: 100%;
+}
+
+.randomCheckboxWrapper{
+  margin-left: auto;
+  margin-right: auto;
+  width: 37vw;
+}
+
+/*Checkboxes styles*/
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  font: 14px/20px "Open Sans", sans-serif;
+  color: black;
+  letter-spacing: 2px;;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+
+input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #54b95b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*Radio button styles*/
+input[type="radio"] { display: none; }
+
+input[type="radio"] + label {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  font: 14px/20px "Open Sans", sans-serif;
+  color: black;
+  letter-spacing: 2px;;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input[type="radio"] + label:last-child { margin-bottom: 0; }
+
+input[type="radio"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #54b95b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="radio"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*=============== Submit ===============*/
+input[type="submit"] {
+    margin-left: auto;
+    margin-right: auto;
+    width: 140px;
+    height: 50px;
+    border: 1px solid;
+    background: #2dc74e;
+    border-radius: 25px;
+    letter-spacing: 2px;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    opacity: 1;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: background .2s ease-in-out;
+    -webkit-transition: background .2s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+input[type="submit"]:active {
+  background: #b2edbe;
+  transition: background .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: background .2s ease-in-out, opacity .2s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+/*=============== Back button ===============*/
+
+.backButton {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 140px;
+    height: 50px;
+    border: 1px solid;
+    background: #2dc74e;
+    border-radius: 25px;
+    letter-spacing: 2px;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    opacity: 1;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: background .2s ease-in-out;
+    -webkit-transition: background .2s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+.backButton:active {
+  background: #b2edbe;
+  transition: background .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: background .2s ease-in-out, opacity .2s ease-in-out; /* For Safari 3.1 to 6.0 */
+}
+
+/*=============== NAV ===============*/
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__img {
+  width: 32px;
+  margin-top: 5px;
+}
+
+.nav__logo {
+  color: #26a699;
+  font-family: 'Lobster', cursive;
+}
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--container-color);
+    box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+    width: 100%;
+    height: 4rem;
+    padding: 0 1rem;
+    display: grid;
+    align-content: center;
+    border-radius: 1.25rem 1.25rem 0 0;
+    transition: .4s;
+  }
+}
+
+.nav__list,
+.nav__link {
+  display: flex;
+}
+
+.nav__link {
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4px;
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+.nav__list {
+  justify-content: space-around;
+}
+
+.nav__name {
+  font-size: var(--tiny-font-size);
+  display: none;
+}
+
+.nav__icon {
+  font-size: 1.5rem;
+}
+
+/*Active link*/
+.active-link {
+  position: relative;
+  color: var(--first-color);
+  transition: .3s;
+}
+
+/* Minimalist design, active link */
+/* .active-link::before{
+  content: '';
+  position: absolute;
+  bottom: -.5rem;
+  width: 4px;
+  height: 4px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+} */
+
+/* Change background header */
+.scroll-header {
+  box-shadow: 0 1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For small devices */
+/* Remove if you choose, the minimalist design */
+/* @media screen and (max-width: 320px) {
+  .nav__name {
+    display: none;
+  }
+
+} */
+
+/* For medium devices */
+@media screen and (min-width: 321px) {
+  .restaurantBoxes{
+    padding: 20px;
+    height: 235px;
+  }
+
+  .randomCheckBoxes{
+    padding: 20px;
+  }
+
+  .randomCheckBoxes2{
+    padding: 20px;
+  }
+
+  .randomCheckboxWrapper{
+    width: 200px;
+  }
+
+  .criteriaContainer{
+      margin-top: 20px;
+      height: 95%;
+  }
+
+  .criteriaForm{
+    overflow: auto;
+    height: 90%;
+  }
+
+  .nav__list {
+    justify-content: center;
+    column-gap: 3rem;
+  }
+
+  .header__icon {
+    display: none;
+  }
+
+  .nav__logo {
+    font-size: 30px;
+  }
+
+  .section__title{
+    font-size: 1.2rem;
+  }
+
+  .button{
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  body {
+    margin: 0;
+  }
+  .section {
+    padding: 7rem 0 2rem;
+  }
+
+  .restaurantBoxes{
+    height: 200px;
+  }
+
+  .criteriaContainer{
+      margin-top: 40px;
+      height: 90%;
+  }
+
+  .header__icon {
+    width: 50px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline;
+  }
+  .nav {
+    height: calc(var(--header-height) + 1.5rem); /* 4.5rem */
+  }
+  .nav__img {
+    display: none;
+  }
+  .nav__icon {
+    display: none;
+  }
+  .nav__name {
+    font-size: var(--normal-font-size);
+    display: block;
+  }
+  .nav__link:hover {
+    color: var(--first-color);
+  }
+
+  .nav__list {
+      justify-content: center;
+      column-gap: 2rem;
+  }
+
+  .nav__logo {
+    font-size: 40px;
+    top: 10px;
+    position: absolute;
+  }
+
+  /* First design, remove if you choose the minimalist design */
+  .active-link::before {
+    content: '';
+    position: absolute;
+    bottom: -.75rem;
+    width: 4px;
+    height: 4px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+  }
+
+  /* Minimalist design */
+  /* .active-link::before{
+      bottom: -.75rem;
+  } */
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav__logo {
+    font-size: 40px;
+  }
+
+}
+
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header__icon {
+    width: 80px;
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+    display: inline;
+  }
+
+  .nav__logo {
+    font-size: 60px;
+    top: 5px;
+  }
+
+}
