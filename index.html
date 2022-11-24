@@ -7,6 +7,9 @@
         <!--=============== BOXICONS ===============-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
+        <!--=============== MANIFEST ===============-->
+        <link rel="manifest" href="manifest.json">
+
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -63,17 +66,17 @@
                     <div class="restaurantBoxes">
                         <div class="checkboxWrapper">
                           <input type="checkbox" id="box-1" name="restaurantType" value="Japanese">
-                          <label for="box-1" onclick="toggleBox(box-1)">Japanese</label>
+                          <label for="box-1">Japanese</label>
                           <input type="checkbox" id="box-2" name="restaurantType" value="Bento">
-                          <label for="box-2" onclick="toggleBox()">Bento</label>
+                          <label for="box-2">Bento</label>
                           <input type="checkbox" id="box-3" name="restaurantType" value="Burger">
-                          <label for="box-3" onclick="toggleBox()">Burger</label>
+                          <label for="box-3">Burger</label>
                           <input type="checkbox" id="box-4" name="restaurantType"value="Cha Chaan Teng">
-                          <label for="box-4" onclick="toggleBox()">Cha Chaan Teng</label>
+                          <label for="box-4">Cha Chaan Teng</label>
                           <input type="checkbox" id="box-5" name="restaurantType" value="Cafe">
-                          <label for="box-5" onclick="toggleBox()">Cafe</label>
+                          <label for="box-5">Cafe</label>
                           <input type="checkbox" id="box-6" name="restaurantType" value="Ramen">
-                          <label for="box-6" onclick="toggleBox()">Ramen</label>
+                          <label for="box-6">Ramen</label>
                         </div>
                     </div>
                     <!-- For dayplan -->
@@ -90,7 +93,7 @@
                     <!-- For weekplan -->
                     <h2 id="randomAndRepeat" style="display: none; opacity:0;" class="section__title">Allow repeat?</h2>
                       <div id="randomCheckBoxes2" style="display: none; opacity:0;" class="randomCheckBoxes2">
-                          <div class="randomCheckboxWrapper">
+                          <div class="randomCheckboxWrapper2">
                             <input type="radio" id="yes" value="Y" name="randomAndRepeat">
                             <label for="yes">Yes</label>
                             <input type="radio" id="no" value="N" name="randomAndRepeat">
@@ -101,7 +104,7 @@
                     <!-- Submit -->
                     <div id="backAndSubmit" style="margin: 20px auto 0 auto; width: 285px;">
                       <input id="back" type="button" class="backButton" onclick="backToIndex()" value="Back">
-                      <input id="submitRequest" type="submit" onclick="submitRequest()">
+                      <input id="submitRequest" type="submit" onclick="submitRequest()" value="Submit">
                     </div>
               </form>
               </div>
@@ -113,5 +116,10 @@
 
         <!--=============== MAIN JS ===============-->
         <script src="assets/js/main.js"></script>
+        <script>
+        if ('serviceWorker' in navigator){
+          navigator.serviceWorker.register('/service-worker.js');
+        }
+        </script>
     </body>
 </html>
