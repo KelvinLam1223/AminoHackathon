@@ -346,6 +346,29 @@ input[type="radio"]:checked + label:before {
   transform: rotate(45deg);
 }
 
+.list_data{
+  font-size: var(--normal-font-size);
+  color: var(--title-color);
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.singleResultContainer{
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  width: 80%;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+  -webkit-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
 /*=============== Submit ===============*/
 .submitButton {
     margin-left: auto;

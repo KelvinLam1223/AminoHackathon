@@ -18,6 +18,8 @@
 // }
 // window.addEventListener('scroll', scrollActive)
 
+var googleList;
+var plan;
 
 /*=============== CHANGE BACKGROUND HEADER ===============*/
 function scrollHeader(){
@@ -32,6 +34,7 @@ window.addEventListener('scroll', scrollHeader)
 function toggleBox(){
 
 }
+
 
 function backToIndex(){
   // Hide all the options
@@ -93,7 +96,7 @@ function showCriteria(selection){
   }
 
 function planSelection(selection){
-    var plan = selection;
+    plan = selection;
     console.log(plan);
     document.getElementById('planTitle').style.opacity = 0;
     document.getElementById('dayPlan').style.opacity = 0;
@@ -128,9 +131,8 @@ function onLoadhandler(){
     if (resp.error !== undefined) {
       throw (resp);
     }
-    var list=await getData();
-    console.log(list.length)
-
+    googleList=await getData();
+    console.log(googleList.length)
   };
 
   if (gapi.client.getToken() === null&&tokenClient.getToken===null) {
@@ -143,11 +145,103 @@ function onLoadhandler(){
   }
 }
 
+// Converts numeric degrees to radians
+function toRad(Value) {
+  return Value * Math.PI / 180
+}
+
+function calcCrow(lat1, lon1, lat2, lon2) {
+  var R = 6371 // km
+  var dLat = toRad(lat2 - lat1)
+  var dLon = toRad(lon2 - lon1)
+  var lat1 = toRad(lat1)
+  var lat2 = toRad(lat2)
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2)
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  var d = R * c
+  return d
+}
+
+function filterList(element,index){
+  if(index===0)return false;
+  var dict={};
+  var allEmpty= true;
+  var radius = parseFloat(document.getElementById("myRange").value);
+  let cord = [22.337346694909733, 114.15070943918803]
+  let len=6
+  console.log(radius)
+  console.log(calcCrow(cord[0],cord[1],element[6],element[7])*1000);
+  if(calcCrow(cord[0],cord[1],element[6],element[7])*1000>radius)return false;
+
+  for(var i=1;i<=len;i++){
+    dict[document.getElementById('box-'+i).value]=document.getElementById('box-'+i).checked;
+    if(document.getElementById('box-'+i).checked) allEmpty=false;
+  }
+  if(allEmpty) return true;
+  for (const [key, value] of Object.entries(dict)) {
+    if(value&&element[3].includes(key)) return true;
+  }
+  return false;
+}
+
 //Submit request
 function submitCriteria(){
+  var filteredList=googleList.filter((filterList));
+  var result=[];
+  console.log(filteredList.length);
+  if(plan==="d")
+  {
+    if(document.getElementById("list").checked){
+      result=filteredList;
+    }
+    else //random or did not select
+    {
+      var index = Math.floor(Math.random()*filteredList.length);
+      result.push(filteredList[index]);
+    }
+  }
+  else if (plan==="w")
+  {
+    if(document.getElementById("yes").checked){
+      for(var i =0;i<5;i++){
+        var index = Math.floor(Math.random()*filteredList.length);
+        result.push(filteredList[index]);
+      }
+    }
+    else{
+      var indices=[];
+      for(var i =0;i<5;i++){
+        var index = Math.floor(Math.random()*filteredList.length);
+        while(indices.find(index)){
+          index = Math.floor(Math.random()*filteredList.length);
+        }
+        result.push(filteredList[index]);
+      }
+    }
+  }
+  else{
+    console.error("undefined plan")
+  }
+  console.log(result.length);
+  console.log(result);
+
   //animation
   document.getElementById('submitRequest').style.opacity = 0;
   setTimeout(function (){ document.getElementById('submitRequest').style.display = "none";}, 800);
+  document.getElementById('name').lastChild.textContent = result[0][0];
+  document.getElementById('address').lastChild.textContent = result[0][1];
+  document.getElementById('price').lastChild.textContent = result[0][2];
+  document.getElementById('type').lastChild.textContent = result[0][3];
+  document.getElementById('positive').lastChild.textContent = result[0][4];
+  document.getElementById('negative').lastChild.textContent = result[0][5];
+  //for UI testing
+  document.getElementById('criteriaContainer').style.opacity = 0;
+  setTimeout(function (){ document.getElementById('criteriaContainer').style.display = "none";}, 800);
+  document.getElementById('singleResultContainer').style.display = "block";
+  setTimeout(function (){
+  document.getElementById('singleResultContainer').style.opacity = 1;}, 800)
+
 }
 
 
