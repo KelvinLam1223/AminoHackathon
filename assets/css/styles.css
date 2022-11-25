@@ -361,7 +361,6 @@ input[type="radio"]:checked + label:before {
   margin-right: auto;
   max-width: 900px;
   width: 80%;
-  height: 250px;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);

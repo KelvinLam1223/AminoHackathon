@@ -235,6 +235,9 @@ function submitCriteria(){
   document.getElementById('type').lastChild.textContent = result[0][3];
   document.getElementById('positive').lastChild.textContent = result[0][4];
   document.getElementById('negative').lastChild.textContent = result[0][5];
+  var paramAddress = result[0][1].replaceAll(' ','+');
+  console.log(paramAddress);
+  document.getElementById("mapIframe").src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q="+paramAddress+"&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
   //for UI testing
   document.getElementById('criteriaContainer').style.opacity = 0;
   setTimeout(function (){ document.getElementById('criteriaContainer').style.display = "none";}, 800);
