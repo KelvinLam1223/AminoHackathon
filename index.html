@@ -151,14 +151,12 @@
       //  * Callback after the API client is loaded. Loads the
       //  * discovery doc to initialize the API.
       //  */
-      // async function intializeGapiClient() {
-      //   await gapi.client.init({
-      //     apiKey: API_KEY,
-      //     discoveryDocs: [DISCOVERY_DOC],
-      //   });
-      //   gapiInited = true;
-      //   maybeEnableButtons();
-      // }
+      async function intializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC],
+        });
+      }
       //
       // /**
       //  * Callback after Google Identity Services are loaded.
