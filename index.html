@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
         <title>Amino Lunch Buddy</title>
     </head>
-    <body>
+    <body onload="onLoadhandler()">
         <!--=============== HEADER ===============-->
         <header class="header" id="header">
             <nav class="nav container">
@@ -101,7 +101,7 @@
                     <!-- Submit -->
                     <div id="backAndSubmit" style="margin: 20px auto 0 auto; width: 285px;">
                       <input id="back" type="button" class="backButton" onclick="backToIndex()" value="Back">
-                      <input id="submitRequest" type="button" class="submitButton" onclick="submitRequest()">
+                      <input id="submitRequest" type="button" class="submitButton" onclick="submitCriteria()" value="Submit">
                     </div>
               </form>
               </div>

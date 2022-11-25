@@ -120,18 +120,34 @@ async function getData() {
   if (!range || !range.values || range.values.length == 0) {
     return;
   }
-  console.log(range.values.length);
+  return range.values;
+}
+
+function onLoadhandler(){
+  tokenClient.callback = async (resp) => {
+    if (resp.error !== undefined) {
+      throw (resp);
+    }
+    var list=await getData();
+    console.log(list.length)
+
+  };
+
+  if (gapi.client.getToken() === null&&tokenClient.getToken===null) {
+    // Prompt the user to select a Google Account and ask for consent to share their data
+    // when establishing a new session.
+    tokenClient.requestAccessToken({prompt: 'consent'});
+  } else {
+    // Skip display of account chooser and consent dialog for an existing session.
+    tokenClient.requestAccessToken({prompt: ''});
+  }
 }
 
 //Submit request
-function submitRequest(){
+function submitCriteria(){
   //animation
   document.getElementById('submitRequest').style.opacity = 0;
   setTimeout(function (){ document.getElementById('submitRequest').style.display = "none";}, 800);
-
-
-  //get getData
-  getData();
 }
 
 
