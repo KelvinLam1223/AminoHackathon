@@ -237,7 +237,7 @@ function submitCriteria(){
   document.getElementById('negative').lastChild.textContent = result[0][5];
   var paramAddress = result[0][1].replaceAll(' ','+');
   console.log(paramAddress);
-  document.getElementById("mapIframe").src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q="+paramAddress+"&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+  document.getElementById("mapIframe").src="https://www.bing.com/maps/embed?h=400&w=500&cp="+result[0][6]+"~"+result[0][7]+"&lvl=11&typ=d&sty=r&src=SHELL&FORM=MBEDV8";
   //for UI testing
   document.getElementById('criteriaContainer').style.opacity = 0;
   setTimeout(function (){ document.getElementById('criteriaContainer').style.display = "none";}, 800);
