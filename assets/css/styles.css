@@ -243,19 +243,12 @@ img {
 .checkboxWrapper{
   margin-left: auto;
   margin-right: auto;
-  padding-right: 2px;
   width: 80%;
   overflow: auto;
   height: 100%;
 }
 
 .randomCheckboxWrapper{
-  margin-left: auto;
-  margin-right: auto;
-  width: 37vw;
-}
-
-.randomCheckboxWrapper2{
   margin-left: auto;
   margin-right: auto;
   width: 37vw;
@@ -354,7 +347,7 @@ input[type="radio"]:checked + label:before {
 }
 
 /*=============== Submit ===============*/
-input[type="submit"] {
+.submitButton {
     margin-left: auto;
     margin-right: auto;
     width: 140px;
@@ -363,22 +356,21 @@ input[type="submit"] {
     background: #2dc74e;
     border-radius: 25px;
     letter-spacing: 2px;
-    font-size: 1.2rem;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    font-size: 18px;
     color: #e9f4fb;
     font-weight: 700;
     cursor: pointer;
     outline: none;
     opacity: 1;
     user-select: none;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
     -webkit-user-select: none;
     touch-action: manipulation;
     transition: background .2s ease-in-out;
     -webkit-transition: background .2s ease-in-out; /* For Safari 3.1 to 6.0 */
 }
 
-input[type="submit"]:active {
+.submitButton:active {
   background: #b2edbe;
   transition: background .2s ease-in-out, opacity .2s ease-in-out;
   -webkit-transition: background .2s ease-in-out, opacity .2s ease-in-out; /* For Safari 3.1 to 6.0 */
@@ -396,15 +388,14 @@ input[type="submit"]:active {
     background: #2dc74e;
     border-radius: 25px;
     letter-spacing: 2px;
-    font-size: 1.2rem;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    font-size: 18px;
     color: #e9f4fb;
     font-weight: 700;
     cursor: pointer;
     outline: none;
     opacity: 1;
     user-select: none;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
     -webkit-user-select: none;
     touch-action: manipulation;
     transition: background .2s ease-in-out;
@@ -528,10 +519,6 @@ input[type="submit"]:active {
 
   .randomCheckboxWrapper{
     width: 200px;
-  }
-
-  .randomCheckboxWrapper2{
-    width: 150px;
   }
 
   .criteriaContainer{

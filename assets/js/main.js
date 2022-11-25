@@ -105,11 +105,34 @@ function planSelection(selection){
     // showCriteria(plan);
 }
 
+async function getData() {
+  let response;
+  try {
+    // Fetch first 10 files
+    response = await gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: '14LpZyU4BGI0z062kYYC9bvUdkYWtxYqw-rQpxEEMBq0',
+      range: 'Restaurants',
+    });
+  } catch (err) {
+    return;
+  }
+  const range = response.result;
+  if (!range || !range.values || range.values.length == 0) {
+    return;
+  }
+  console.log(range.values.length);
+}
+
 //Submit request
 function submitRequest(){
+  //animation
   document.getElementById('submitRequest').style.opacity = 0;
   setTimeout(function (){ document.getElementById('submitRequest').style.display = "none";}, 800);
-};
+
+
+  //get getData
+  getData();
+}
 
 
 // UI control of slider section
